@@ -201,7 +201,7 @@ class Tables extends Component {
                 <Card className="mb-4">
                     <div className="card-header">
                         <i className="fa fa-table mr-1"></i>
-                        Patients Information ({this.state.NOP}): 
+                        Informations sur les patients ({this.state.NOP}): 
                     </div>
                     <div className="card-body">
                         <div className="table-responsive">
@@ -212,7 +212,7 @@ class Tables extends Component {
                 <Card className="mb-4">
                     <div className="card-header">
                         <i className="fa fa-table mr-1"></i>
-                        Users Information ({this.state.NOU}): 
+                        Informations sur les utilisateurs ({this.state.NOU}): 
                     </div>
                     <div className="card-body">
                         <div className="table-responsive">

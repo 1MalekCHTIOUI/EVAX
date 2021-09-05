@@ -16,15 +16,15 @@ class Home extends Component{
         this.props.posts.map(item => console.log(item))
         return(
             <>
-            <div className={styles.homeBackground}  style={{height: "90vh"}}>
+            <div className={styles.homeBackground}   style={{height: "90vh"}}>
                 <Container style={{
                     paddingTop: "5vh", 
                     background:"rgb(0,0,0,0.8)", 
                     color:"white",
                     height: "100%"
                     }}>
-                    <h1>Bienvenu Sur EVAX</h1>
-                    <Container>
+                    <h1 className={styles.showInfo}>Bienvenu Sur EVAX</h1>
+                    <Container className={styles.showInfo}>
                         <Container style={{padding: '2%'}}>
                             <Link to="/enroll"><button className="btn btn-danger">Commence La Vaccination</button></Link>
                         </Container>                        
@@ -33,16 +33,16 @@ class Home extends Component{
                         </Container>
                         <h5>Statistiques: </h5>
                         <Container className={styles.block} style={{ width: "50%" }}>
-                            <p>People Registered: &nbsp;<b>{countRegistered(this.props.posts)}</b></p>
+                            <p>Personnes Inscrites: &nbsp;<b>{countRegistered(this.props.posts)}</b></p>
                         </Container>
                         <hr style={{width: "20vw", background:"gray"}}/>
                         <Container className={styles.block} style={{ width: "50%"}}>
-                            <p>People Accepted: &nbsp;<b>{countAccepted(this.props.posts)}</b></p>
+                            <p>Personnes acceptées: &nbsp;<b>{countAccepted(this.props.posts)}</b></p>
                         </Container>
                         <hr style={{width: "10vw", background:"gray"}}/>
 
                         <Container className={styles.block} style={{ width: "50%" }}>
-                            <p>People Pending: &nbsp;<b>{countPending(this.props.posts)}</b></p>
+                            <p>Personnes en attente: &nbsp;<b>{countPending(this.props.posts)}</b></p>
                         </Container>
 
                     </Container>

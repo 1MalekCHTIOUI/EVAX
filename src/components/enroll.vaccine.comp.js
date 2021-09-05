@@ -130,13 +130,14 @@ class Enroll extends Component {
                 <p>CIN: <b>{this.state.cin}</b></p>
                 <p>Nom: <b>{this.state.first_name}</b></p>
                 <p>Prenom: <b>{this.state.last_name}</b></p>
-                <p>date_nais: <b>{this.state.date_nais}</b></p>
+                <p>date_nais: <b>{new Date(this.state.date_nais).toDateString()}</b></p>
                 <p>Adresse: <b>{this.state.address}</b></p>
                 <p>Email: <b>{this.state.email}</b></p>
+                {this.state.ills.length > 0 ?     
                 <table className="table table-striped">
                 <thead style={{background:"rgb(206, 204, 204)"}}>
                     <tr>
-                        <th>Name</th>
+                        <th>Maladie</th>
                         <th>#</th>
                     </tr>
                 </thead>
@@ -151,6 +152,8 @@ class Enroll extends Component {
                     </tr>
                 </tbody>
                 </table>
+                : ""
+                }
             </div>
         )
     }
@@ -161,7 +164,7 @@ render(){
             <div className="row" style={{paddingTop: "5vh"}}>
             <div className="col-sm-2"></div>
             <div className="col">
-                <h2>Start Vaccine inscription today</h2>
+                <h2>Commencer l'Inscription au Vaccin Aujourd'hui <i class="fa fa-clock-o" aria-hidden="true"></i> </h2>
                 <form onSubmit={this.onSubmit}>
                 <div>
                 {this.state.msg ? (
@@ -202,11 +205,11 @@ render(){
                         <input type="text" name="email" className="form-control" value={this.state.email} onChange={this.onChange}/>
                     </div>                    
                     <div className="form-group" style={{marginTop:"6vh"}} >
-                    <input
+                    <input style={{cursor: "pointer"}}
                         type="text"
                         readOnly
                         className="form-control"
-                        placeholder="Please Check If You Have The Following Ills: "
+                        placeholder="S'ill vous plait vérifier si vous avez les maladie suivants: "
                         data-toggle="collapse" href="#multiCollapseExample1"
                         />
                     <Table className="form-control" className="collapse" id="multiCollapseExample1" style={{background:"rgb(0,0,0,0.7)",color:'rgb(255,255,255)', borderRadius:"5px"}}>
@@ -215,7 +218,7 @@ render(){
                         </tbody>
                     </Table>
                     </div>
-                    <button style={{width:"100%", marginTop:"4vh"}} type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Submit</button>
+                    <button style={{width:"100%", marginTop:"4vh", marginBottom: "8vh"}} type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Envoyer</button>
 
                     <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div className="modal-dialog" role="document"  style={{color:"black"}}>
