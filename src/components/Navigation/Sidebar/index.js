@@ -8,8 +8,9 @@ import {showTime} from '../../util/analytics'
 class Sidebar extends Component {
 
   componentDidMount(){
-    showTime() 
-  } 
+    showTime();
+  }
+
   render() {
     const { clickMenuOpen, toggled } = this.props;
     return (

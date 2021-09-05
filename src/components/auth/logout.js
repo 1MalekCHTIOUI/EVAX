@@ -11,9 +11,9 @@ class Logout extends Component {
     }
     render() {
         return (
-            <Link onClick={this.props.logout} href="#" className="dropdown-item">
-                <i className="fa fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                Logout
+            <Link className={this.props.className} onClick={this.props.logout} href="#">
+                {this.props.icon}
+                Déconnecter
             </Link>
         );
     }

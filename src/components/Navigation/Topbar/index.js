@@ -72,18 +72,6 @@ class Topbar extends Component {
                   <i className="fa fa-search fa-fw"></i>
                 </a>
                 {/* <!-- Dropdown - Messages --> */}
-                <div className="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                  <form className="form-inline mr-auto w-100 navbar-search">
-                    <div className="input-group">
-                      <input type="text" className="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
-                      <div className="input-group-append">
-                        <button className="btn btn-primary" type="button">
-                          <i className="fa fa-search fa-sm"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
               </li>
 
 
@@ -96,17 +84,13 @@ class Topbar extends Component {
                 <div className="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                   <Link to="/dashboard/profile" className="dropdown-item">
                       <i className="fa fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                      Profile
+                      Profil
                   </Link>
                   <a className="dropdown-item" href="#">
                     <i className="fa fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Settings
+                    Paramétres
                   </a>
-                  <a className="dropdown-item" href="#">
-                    <i className="fa fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Activity Log
-                  </a>
-                  <Logout />
+                  <Logout className={"dropdown-item"} icon={<i className="fa fa-list fa-sm fa-fw mr-2 text-gray-400"></i>}/>
                 </div>
               </li>
 

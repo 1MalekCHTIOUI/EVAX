@@ -53,11 +53,11 @@ class Navbars extends Component {
             <Fragment>
                 <NavItem>
                     <span className='navbar-text mr-3'>
-                        <strong>{ user ? `Welcome ${user.first_name}` : ''}</strong>
+                        <strong>{ user ? `Bienvenu ${user.first_name}` : ''}</strong>
                     </span>
                 </NavItem>
                 <NavItem>
-                    <Logout />
+                        <Logout className={"nav-link"}/>
                 </NavItem>
             </Fragment>
         )
@@ -65,7 +65,7 @@ class Navbars extends Component {
             <Fragment>
                     <NavItem>
                         <Link to="/signin">
-                            <button className="btn btn-primary">Sign-in <i class="fa fa-sign-in" aria-hidden="true"></i></button>
+                            <button className="btn btn-primary">Connecter-vous <i class="fa fa-sign-in" aria-hidden="true"></i></button>
                         </Link>
                     </NavItem>
             </Fragment>
@@ -76,9 +76,12 @@ class Navbars extends Component {
                     <NavbarBrand href="/">EVAX</NavbarBrand>
                     <NavbarToggler />
                     
+                    { isAuthenticated ? <NavItem ><i class="fa fa-circle" aria-hidden="true"></i> <Link to="/dashboard" style={{textDecoration:"none", color:"gray"}}> Dashboard</Link></NavItem>: "" }
+ 
                     <Nav className={`ml-auto`} navbar>
                         { isAuthenticated ? authLinks : guestLinks }
                     </Nav>
+                    
                 </Navbar>
             </div>
         )

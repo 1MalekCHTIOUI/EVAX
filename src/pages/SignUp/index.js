@@ -59,7 +59,7 @@ componentDidUpdate(prevPorps){
                   <div className="col-lg-6">
                     <div className="p-5">
                       <div className="text-center">
-                        <h1 className="h4 text-gray-900 mb-4">Create an Account!</h1>
+                        <h1 className="h4 text-gray-900 mb-4">Créer un compte!</h1>
                         {this.state.msg ? (
                         <Alert color="danger">{this.state.msg}</Alert>
                         ): null}
@@ -67,37 +67,34 @@ componentDidUpdate(prevPorps){
                       <form className="user" onSubmit={this.onSubmit}>
                         <div className="form-group row">
                           <div className="col-sm-6 mb-3 mb-sm-0">
-                            <input type="text" name="first_name" id="first_name" className="form-control form-control-user" onChange={this.onChange} placeholder="First Name" />
+                            <input type="text" name="last_name" id="last_name" className="form-control form-control-user" onChange={this.onChange} placeholder="Nom" />
                           </div>
                           <div className="col-sm-6">
-                            <input type="text" name="last_name" id="last_name" className="form-control form-control-user" onChange={this.onChange} placeholder="Last Name" />
+                            <input type="text" name="first_name" id="first_name" className="form-control form-control-user" onChange={this.onChange} placeholder="Prénom" />
                           </div>
                         </div>
                         <div className="form-group">
-                          <input type="email" name="email" id="email" className="form-control form-control-user" onChange={this.onChange} placeholder="Email Address" />
+                          <input type="email" name="email" id="email" className="form-control form-control-user" onChange={this.onChange} placeholder="Adresse E-mail" />
                         </div>
                         <div className="form-group row">
                           <div className="col-sm-6 mb-3 mb-sm-0">
-                            <input type="password" name="password" id="password" className="form-control form-control-user" onChange={this.onChange} placeholder="Password" />
+                            <input type="password" name="password" id="password" className="form-control form-control-user" onChange={this.onChange} placeholder="Mot de passe" />
                           </div>
                         </div>
                         <button type="submit" className="btn btn-primary btn-user btn-block">
-                          Register Account
+                          Créer compte
                         </button>
                         <hr/>
-                        <a href="index.html" className="btn btn-google btn-user btn-block">
-                          <i className="fab fa-google fa-fw"></i> Register with Google
+                        <a href="http://www.gmail.com" className="btn btn-google btn-user btn-block">
+                          <i className="fa fa-google fa-fw"></i> Crée un compte avec Google
                         </a>
-                        <a href="index.html" className="btn btn-facebook btn-user btn-block">
-                          <i className="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                        <a href="http://www.facebook.com" className="btn btn-facebook btn-user btn-block">
+                          <i className="fa fa-facebook-f fa-fw"></i> Crée un compte ave Facebook
                         </a>
                       </form>
                       <hr/>
                       <div className="text-center">
-                        <a className="small" href="forgot-password.html">Forgot Password?</a>
-                      </div>
-                      <div className="text-center">
-                        <Link className="small" to="/">Already have an account? Login!</Link>
+                        <Link className="small" to="/signin">Vous avez déjà un compte? Connecter!</Link>
                       </div>
                     </div>
                   </div>

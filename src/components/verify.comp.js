@@ -105,15 +105,15 @@ class Verify extends Component {
     }
     render(){
         return (
-            <div className={styles.homeBackground}>
+            <div className={styles.homeBackground} >
                 <Container style={{
                     paddingTop: "5vh", 
                     background:"rgb(0,0,0,0.8)", 
                     color:"white",
                     height: "100%"}}>
-                    <h1>Bienvenu Sur EVAX</h1>
-                    <h5>Vérifier Votre Date</h5>
-                    <form className="form-inline" onSubmit={this.onSubmit} style={{height:"74vh", display:"flex", justifyContent:"center"}}>
+                    <h1 className={styles.showInfo} >Bienvenu Sur EVAX</h1>
+                    <h5 className={styles.showInfo} >Vérifier Votre Date</h5>
+                    <form  className="form-inline" onSubmit={this.onSubmit} style={{height:"74vh", display:"flex", justifyContent:"center"}}>
                         <div className="form-group mb-2">
                             <input name="cin" className="form-control" value={this.state.cin} onChange={this.onChange} placeholder="Entrer Votre N° CIN"/>
                         </div>

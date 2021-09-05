@@ -119,13 +119,13 @@ render() {
                   <div className="col-xl-8 col-lg-6">
                     <ChartLine />
                   </div>
-                  <CardBasic title="Donut Chart">
+                  <CardBasic title="Statistiques de vaccination">
                   <Pie
                     data = {{
-                      labels: ['Accepted', 'Pending'],
+                      labels: ['Accepté', 'En Attente'],
                       datasets: [
                             {
-                              label: 'Vaccination Statistics',
+                              label: 'Statistiques de vaccination',
                               backgroundColor: [
                                 'rgba(75, 192, 192)',   
                                 'rgba(255, 206, 86)'
@@ -146,9 +146,9 @@ render() {
                     </CardBasic>
 
                 </div>
-                <div className="row">
+                <div className="row" style={{marginBottom: "2%"}}>
                   <div className="col-xl">
-                    <Link to="/signup" className="btn btn-success" role="button">Register User</Link>
+                    <Link to="/signup" className="btn btn-success" role="button">Crée un compte Admin</Link>
                   </div>
                 </div>
                 <div className="row">
@@ -167,7 +167,7 @@ render() {
             <footer className="sticky-footer bg-white">
               <div className="container my-auto">
                 <div className="copyright text-center my-auto">
-                  <span>Copyright &copy; Your Website 2019</span>
+                  <span>Copyright &copy; EVAX 2019</span>
                 </div>
               </div>
             </footer>
