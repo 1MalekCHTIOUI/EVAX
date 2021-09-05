@@ -1,0 +1,42 @@
+/* #nav > *{
+  padding-left: 10px;
+  color: white;
+}
+
+nav {
+  background: red;
+}
+body{
+  background-color: rgb(209, 209, 209);
+  font-family: Poppins, "Sans Serif";
+}
+.floatRightNav {
+  padding-left: 80vw;
+}
+
+#centerContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#date {
+  position: relative;
+  color:white;
+  top:8px;
+  right: 38vw;
+}
+
+#topMargin {
+  margin-top: 3vh;
+}
+
+.form {
+  width: 50vw;
+} */
+
+html,
+body {
+  height: 100%;
+  font-family: Poppins;
+}

@@ -1,0 +1,92 @@
+.colornav {
+  background-color: black;
+  margin-bottom: 0vh;
+}
+
+.mainFooter {
+  position: relative;
+  padding: 10px 10px 0px 10px;
+  bottom: 0;
+  width: 100%;
+  height: 10vh;
+  background: rgb(0, 0, 0);
+}
+
+.white {
+  color: red;
+}
+
+.form {
+  background-image: url("./images/1393216.jpg");
+  background-size: cover;
+  color: white;
+  height: 96vh;
+  overflow-x: hidden;
+}
+
+.homeBackground {
+  background-image: url("./images/vacc2.jpeg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  text-align: center;
+  margin: auto;
+  padding: 0;
+}
+
+.displayNone {
+  display: none;
+}
+
+.block {
+  margin-top: 3vh;
+  border-radius: 5px;
+  background: lightblue;
+  color: black;
+  height: 5vh;
+}
+.block > p {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 17px;
+}
+
+.centerContent {
+  height: 100vh;
+}
+
+.showInfo {
+  animation: fade 0.5s ease-in;
+}
+
+.p {
+  font-size: 20px;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
+
+.userBack {
+  border-radius: 5px;
+  margin-left: 1vw;
+  z-index: 10;
+}
+
+.userImage {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.userImage > img {
+  width: 70px;
+  height: 90%;
+}
