@@ -35,20 +35,19 @@ class Navbars extends Component {
         auth: PropTypes.object.isRequired
     }
     
-    // componentDidMount(){
-    //     getClientIp().then(res => {
-    //         if(res.toString() === "196.186.160.71") {
-    //             console.log("It's Equal");
-    //             this.setState({sameIp: true});
-    //         } else {
-    //             console.log("It's Not Equal");
-    //         }
-    //     });
-    // }
+    componentDidMount(){
+        let myIp = "197.9.92.206";
+        getClientIp().then(res => {
+            if(res === myIp) {
+                this.setState({sameIp: true});
+            } else {
+                this.setState({sameIp: false});
+            }
+        });
+    }
     
     render() {
         const { isAuthenticated, user } = this.props.auth;
-
         const authLinks = (
             <Fragment>
                 <NavItem>
@@ -62,13 +61,14 @@ class Navbars extends Component {
             </Fragment>
         )
         const guestLinks = (
+            this.state.sameIp ? 
             <Fragment>
                     <NavItem>
                         <Link to="/signin">
                             <button className="btn btn-primary">Connecter-vous <i class="fa fa-sign-in" aria-hidden="true"></i></button>
                         </Link>
                     </NavItem>
-            </Fragment>
+            </Fragment> : ""
         )
         return (
             <div>
@@ -77,7 +77,7 @@ class Navbars extends Component {
                     <NavbarToggler />
                     
                     { isAuthenticated ? <NavItem ><i class="fa fa-circle" aria-hidden="true"></i> <Link to="/dashboard" style={{textDecoration:"none", color:"gray"}}> Dashboard</Link></NavItem>: "" }
- 
+
                     <Nav className={`ml-auto`} navbar>
                         { isAuthenticated ? authLinks : guestLinks }
                     </Nav>
