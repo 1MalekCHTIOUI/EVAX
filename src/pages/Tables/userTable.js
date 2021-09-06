@@ -9,11 +9,12 @@ import EditModal from '../../components/admin/editModal'
 export const DatatablePageUsers = (props) => {
 
         let DATAS = [];
+        
         props.info.map(item => {
           item.action = 
           (<div>
             <button className="btn btn-danger" onClick={() => {
-            props.delete(item._id)}}>Delete</button><br/>
+            props.delete(item._id)}}>Delete</button>
           </div>)
           DATAS.push(item);
         })

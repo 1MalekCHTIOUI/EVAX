@@ -117,6 +117,7 @@ export const deletePatient = id  => dispatch => {
             payload: id
         })
     })
+    .then(() => window.location.reload())
     .catch(error => console.log(error))
     
 }

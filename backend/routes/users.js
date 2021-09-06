@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 const config = require('config')
 const auth = require('./middleware/auth')
 
-router.route('/:id').delete(auth, (req, res) =>{
+router.route('/:id').delete((req, res) =>{
     let id = req.params.id;
     User.findByIdAndDelete(req.params.id).then(()=>{
         res.json({msg: 'User deleted'})
