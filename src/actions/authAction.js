@@ -24,6 +24,7 @@ export const register = ({first_name, last_name, email, password}) => dispatch =
             type: REGISTER_SUCCESS,
             payload: res.data
         }))
+        .then(()=>{window.location.pathname = "/dashboard"})
         .catch(err => {
             dispatch(returnErrors(err.response.data, err.response.status, 'REGISTER_FAIL'))
             dispatch({

@@ -39,11 +39,11 @@ class Dashboard extends Component {
       auth: true,
       chartData:{}
     }
-    this.datas = this.datas.bind(this)
   }
 
   componentDidUpdate(prevPorps){
     const {error} = this.props;
+    
     if(error !== prevPorps.error){
       console.log(error.msg);
         if(error.msg.msg === "No Authorization") {
@@ -52,20 +52,6 @@ class Dashboard extends Component {
     }
   }
 
-  datas() {
-    // Ajax calls here
-    this.setState({
-      chartData:{
-        labels: ["Registred", "Vaccinate"],
-        datasets: [{
-            data: [, 1],
-            backgroundColor: ['#4e73df', '#1cc88a'],
-            hoverBackgroundColor: ['#2e59d9', '#17a673'],
-            hoverBorderColor: "rgba(234, 236, 244, 1)",
-        }],
-      }
-    });
-  }
 render() {
     return (
       <div>
