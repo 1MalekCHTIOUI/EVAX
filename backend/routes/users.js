@@ -20,11 +20,11 @@ router.route('/signup').post((req, res)=>{
     const email = req.body.email;
     const password = req.body.password;
     if(!last_name || !first_name || !email || !password){
-        return res.status(400).json({msg: "Please enter all fields"})
+        return res.status(400).json({msg: "Veuillez saisir tous les champs"})
     }
     User.findOne({email})
     .then(user => {
-        if(user) res.status(400).json({msg: 'User already Exists'})
+        if(user) res.status(400).json({msg: "L'utilisateur déjà existe"})
     })
 
     const newUser = new User({

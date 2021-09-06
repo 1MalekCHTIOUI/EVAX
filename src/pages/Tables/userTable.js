@@ -13,7 +13,7 @@ export const DatatablePageUsers = (props) => {
           item.action = 
           (<div>
             <button className="btn btn-danger" onClick={() => {
-            props.delete(item._id); window.location.reload()}}>Delete</button><br/>
+            props.delete(item._id)}}>Delete</button><br/>
           </div>)
           DATAS.push(item);
         })

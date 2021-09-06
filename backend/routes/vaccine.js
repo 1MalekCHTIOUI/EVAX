@@ -100,44 +100,4 @@ router.route('/:cin').get((req, res) =>{
         err => res.status(400).json('Error: ' + err)
     )
 });
-/*
-router.route('/:id').get((req, res) =>{
-
-    Patient.findById(req.params.id)
-    .then(
-        patient => res.json(patient)
-    )
-    .catch(
-        err => res.status(400).json('Error: ' + err)
-        )
-
-    
-});
-router.route('/:id').delete((req, res) =>{
-    let id = req.params.id;
-    Excercise.findByIdAndDelete(req.params.id).then(()=>{
-        res.json('Exercise deleted')
-        .catch(err => res.status(400).json('Error: '+err))
-
-    })
-});
-
-router.route('/update/:id').post((req, res) =>{
-    Excercise.findById(req.params.id).then(exercise => {
-        exercise.username = req.body.username;
-        exercise.description = req.body.description;
-        exercise.duration = Number(req.body.duration),
-        exercise.date = Date.parse(req.body.date)
-        exercise.save()
-                .then(() => {
-                    res.json("todo updated")
-                })
-                .catch(err =>{
-                    res.status(400).json('Error: '+err)
-                });
-        
-    });
-
-});
-*/
 module.exports = router;

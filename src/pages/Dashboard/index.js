@@ -40,10 +40,12 @@ class Dashboard extends Component {
       chartData:{}
     }
     this.datas = this.datas.bind(this)
+
   }
 
   componentDidUpdate(prevPorps){
     const {error} = this.props;
+    
     if(error !== prevPorps.error){
       console.log(error.msg);
         if(error.msg.msg === "No Authorization") {

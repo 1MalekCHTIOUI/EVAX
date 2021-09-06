@@ -36,7 +36,7 @@ class Navbars extends Component {
     }
     
     componentDidMount(){
-        let myIp = "197.9.92.206";
+        let myIp = "102.30.219.121";
         getClientIp().then(res => {
             if(res === myIp) {
                 this.setState({sameIp: true});

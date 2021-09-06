@@ -9,15 +9,15 @@ const auth = require('../routes/middleware/auth')
 router.route('/signin').post((req, res) => {
     const { email, password } = req.body;
     if(!email || !password) {
-        return res.status(400).json({msg: "Please enter all fields"})
+        return res.status(400).json({msg: "Veuillez saisir tous les champs"})
     }
 
     User.findOne({email})
         .then(user => {
-            if(!user) res.status(400).json({msg: 'User Does Not Exist'})
+            if(!user) res.status(400).json({msg: "L'utilisateur n'existe pas"})
             bcrypt.compare(password, user.password)
             .then(isMatch => {
-                if(!isMatch) return res.status(400).json({msg: 'invalid credentials'});
+                if(!isMatch) return res.status(400).json({msg: "Les informations d'identification sont incorrect"});
                 jwt.sign(
                     { id: user.id },
                     config.get('jwtSecret'),

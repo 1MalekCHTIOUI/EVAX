@@ -9,6 +9,7 @@ import {DatatablePageUsers} from "./userTable"
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { getNextDayOfTheWeek } from '../../components/util/analytics';
+import $ from "jquery"
 const Patients = props => (
     <tr key={props.post._id}>
         <td>{props.post.cin}</td>
@@ -86,6 +87,11 @@ class Tables extends Component {
 
     componentDidMount(){
         this.props.fetchPosts();
+        this.fetchData();
+        this.handleDate();
+    }
+
+    fetchData() {
         axios.get('http://localhost:4000/enroll/')
         .then(res => res.data.map((item) => {
             this.setState({
@@ -101,9 +107,7 @@ class Tables extends Component {
                 users: res.data,
             })
         }))
-
     }
-
     
     // handleAccept = (id) => {
     //     const stats = {
@@ -189,7 +193,7 @@ class Tables extends Component {
         else {
             this.setState({
                 nextDate: new Date(new Date(newestCreation).getFullYear(), new Date(newestCreation).getMonth(), (new Date(newestCreation).getDate() + 7)).toDateString()
-            })
+            });
         }
     }
 
@@ -198,12 +202,11 @@ class Tables extends Component {
     }
 
     render(){
-        window.onload = this.handleDate
+        // window.onload = this.handleDate
         return (
             <>
-
-                <Alert color="success" style={{width: "21vw"}}>Les dates seront fixées le <b>{this.state.nextDate}</b> </Alert>
                 <Card className="mb-4">
+                    <Alert color="success" style={{width: "21vw"}}>Les dates seront fixées le: <b>{this.state.nextDate}</b> </Alert>
                     <div className="card-header">
                         <i className="fa fa-table mr-1"></i>
                         Informations sur les patients ({this.state.NOP}): 

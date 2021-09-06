@@ -117,6 +117,6 @@ export const deletePatient = id  => dispatch => {
             payload: id
         })
     })
-    .catch(error => error.json())
+    .catch(error => console.log(error))
     
 }
