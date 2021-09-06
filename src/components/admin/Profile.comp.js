@@ -4,15 +4,16 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styles from '../../style.module.css'
 import userImage from '../../assets/img/user.png'
+import EditModal from './editModal';
+import { decode } from 'jsonwebtoken';
 class Profile extends Component {
     static propTypes = {
         auth: PropTypes.object.isRequired
     }
     render() {
         const { user } = this.props.auth;
-        console.log(user);
         return (
-            <div className="row" style={{background: "rgb(0,0,0,0.2)",width:"35vw", padding:"2rem"}}>
+            <div className="row" style={{background: "rgb(0,0,0,0.2)", width:"35vw", padding:"2rem"}}>
                 <div className="col" className={styles.userImage}>
                     <img src={userImage} alt="test" />
                 </div>
@@ -22,7 +23,7 @@ class Profile extends Component {
                     <h5>Email: {user ? user.email : ""}</h5>
                 </div>
                 <div className="col">
-                    <button className="btn btn-primary" style={{height:"100%", width:"100%"}}>Edit</button>
+                   <EditModal users={user ? user: ""} />
                 </div>
             </div>
         );

@@ -78,7 +78,7 @@ class Topbar extends Component {
               {/* <!-- Nav Item - User Information --> */}
               <li className="nav-item dropdown no-arrow">
                 <a className="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span className="mr-2 d-none d-lg-inline text-gray-600 meduim">{ user ? `Bienvenu, ${user.first_name} ${user.last_name}` : ''} <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i></span>
+                  <span className="mr-2 d-none d-lg-inline text-gray-600 meduim">{ user ? `Bienvenu, ${user.last_name} ${user.first_name}` : ''} <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i></span>
                 </a>
                 {/* <!-- Dropdown - User Information --> */}
                 <div className="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

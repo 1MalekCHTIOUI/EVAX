@@ -1,7 +1,7 @@
 import react, {Component} from 'react'
 import {connect} from 'react-redux'
 import {fetchPosts, deletePatient} from '../../actions/postAction'
-import { Card } from 'reactstrap';
+import { Alert, Card } from 'reactstrap';
 import PropTypes from 'prop-types'
 import 'chart.js'
 import {DatatablePage} from "./patientTable"
@@ -77,6 +77,7 @@ class Tables extends Component {
             },
             users: [],
             dataR: [],
+            nextDate: "",
             smallestDate: String
         }
         this.handleDelete = this.handleDelete.bind(this)
@@ -186,7 +187,9 @@ class Tables extends Component {
             .toDateString();
         }
         else {
-            console.log(`come on: ${new Date(new Date(newestCreation).getFullYear(), new Date(newestCreation).getMonth(), (new Date(newestCreation).getDate() + 7)).toDateString()}`);
+            this.setState({
+                nextDate: new Date(new Date(newestCreation).getFullYear(), new Date(newestCreation).getMonth(), (new Date(newestCreation).getDate() + 7)).toDateString()
+            })
         }
     }
 
@@ -195,9 +198,11 @@ class Tables extends Component {
     }
 
     render(){
-        window.onload = this.handleDate()
+        window.onload = this.handleDate
         return (
             <>
+
+                <Alert color="success" style={{width: "21vw"}}>Les dates seront fixées le <b>{this.state.nextDate}</b> </Alert>
                 <Card className="mb-4">
                     <div className="card-header">
                         <i className="fa fa-table mr-1"></i>
