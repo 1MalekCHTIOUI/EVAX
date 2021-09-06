@@ -24,7 +24,9 @@ static propTypes = {
 componentDidUpdate(prevPorps){
     const {error} = this.props;
     if(error !== prevPorps.error){
-
+        if(error.msg.msg === "No Authorization") {
+          window.location.pathname = "/"
+        }
         if(error.id === "REGISTER_FAIL") {
             this.setState({msg: error.msg.msg})
         }

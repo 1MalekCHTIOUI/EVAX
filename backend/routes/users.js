@@ -38,25 +38,29 @@ router.route('/signup').post((req, res)=>{
         bcrypt.hash(newUser.password, salt, (err, hash)=>{
             if(err) throw err;
             newUser.password = hash;
-            newUser.save().then(user => {
-                jwt.sign(
-                    { id: user.id },
-                    config.get('jwtSecret'),
-                    (err, token) => {
-                        if(err) throw err;
-                        res.json({
-                            token,
-                            user: {
-                                id: user.id,
-                                first_name: user.first_name,
-                                last_name: user.last_name,
-                                email: user.email
-                            }
-                        })
-                    }
-                )
-
+            newUser.save()
+            .then(user => {
+                res.json({msg: "Registration Success"})
             })
+        //.then(user => {
+                // jwt.sign(
+                //     { id: user.id },
+                //     config.get('jwtSecret'),
+                //     (err, token) => {
+                //         if(err) throw err;
+                //         res.json({
+                //             token,
+                //             user: {
+                //                 id: user.id,
+                //                 first_name: user.first_name,
+                //                 last_name: user.last_name,
+                //                 email: user.email
+                //             }
+                //         })
+                //     }
+                // )
+
+        //     })
         })
     })
 })
