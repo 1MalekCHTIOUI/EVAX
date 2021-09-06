@@ -48,6 +48,22 @@ router.route('/').get((req, res)=>{
     });
 });
 
+router.route('/update/:id').put((req, res)=>{
+    const {first_name, last_name, email} = req.body
+    User.findById(req.params.id).then(user => {
+        user.first_name = first_name;
+        user.last_name = last_name;
+        user.email = email;
+        user.save()
+            .then(() => {
+                res.json({msg: "User updated"})
+            })
+            .catch(err => {
+                res.status(400).json('Error: '+ err)
+            })
+        })
+    })
+
 
 router.route('/user').get(auth, (req, res)=>{
     User.findById(req.user.id)
