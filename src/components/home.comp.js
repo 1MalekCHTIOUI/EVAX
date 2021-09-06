@@ -13,7 +13,6 @@ class Home extends Component{
         this.props.fetchPosts();
     }
     render(){
-        this.props.posts.map(item => console.log(item))
         return(
             <>
             <div className={styles.homeBackground}   style={{height: "90vh"}}>

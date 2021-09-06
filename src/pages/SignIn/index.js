@@ -115,10 +115,10 @@ class SignIn extends Component {
                               Connecter
                             </button>
                             <hr/>
-                            <a href="http://www.google.com" className="btn btn-google btn-user btn-block">
+                            <a href="http://www.gmail.com" className="btn btn-google btn-user btn-block">
                               <i className="fa fa-google fa-fw"></i> Connectez-vous avec Google
                             </a>
-                            <a href="index.html" className="btn btn-facebook btn-user btn-block">
+                            <a href="http://www.facebook.com" className="btn btn-facebook btn-user btn-block">
                               <i className="fa fa-facebook-f fa-fw"></i> Connectez-vous avec Facebook
                             </a>
                           </form>
