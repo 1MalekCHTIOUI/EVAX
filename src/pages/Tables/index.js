@@ -30,10 +30,10 @@ const Patients = props => (
         </td>
         <td>{props.post.status.stats ? 
                 <div>
-                    <p>Accepted</p>
-                    <p>Date For First Shot : <strong>{props.post.call_date.substr(0,10)}</strong></p>
+                    <p>Accepté</p>
+                    <p>Date du premier vaccin : <strong>{props.post.call_date.substr(0,10)}</strong></p>
                 </div> 
-                : "Pending"
+                : "En attente"
             }
         </td>
         <td>
@@ -209,7 +209,7 @@ class Tables extends Component {
                     <Alert color="success" style={{width: "21vw"}}>Les dates seront fixées le: <b>{this.state.nextDate}</b> </Alert>
                     <div className="card-header">
                         <i className="fa fa-table mr-1"></i>
-                        Informations sur les patients ({this.state.NOP}): 
+                        Informations sur les patients ({this.state.NOP!=null ? this.state.NOP : 0}): 
                     </div>
                     <div className="card-body">
                         <div className="table-responsive">

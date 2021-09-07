@@ -31,7 +31,7 @@ function countNonVaccinated(arr){
 function countAccepted(arr){
     let acceptedCount = 0;
     arr.forEach((patient)=> {
-        if(patient.call_date)
+        if(patient.call_date !== "En attente")
             acceptedCount++;
     });
     return acceptedCount;
@@ -40,14 +40,14 @@ function countAccepted(arr){
 function countPending(arr){
     let pendingCount = 0;
     arr.forEach((patient)=> {
-        if(!patient.call_date)
+        if(patient.call_date === "En attente")
             pendingCount++;
     });
     return pendingCount;
 }
 
 function patientsVaccinatedPerNon(arr){
-    return countVaccinated(arr) * 100 / countNonVaccinated(arr) + "%";
+    return countVaccinated(arr) * 100 / countNonVaccinated(arr);
 }
 function countRegistered(arr){
     return parseInt(arr.length);

@@ -42,25 +42,6 @@ router.route('/signup').post((req, res)=>{
             .then(user => {
                 res.json({msg: "Registration Success"})
             })
-        //.then(user => {
-                // jwt.sign(
-                //     { id: user.id },
-                //     config.get('jwtSecret'),
-                //     (err, token) => {
-                //         if(err) throw err;
-                //         res.json({
-                //             token,
-                //             user: {
-                //                 id: user.id,
-                //                 first_name: user.first_name,
-                //                 last_name: user.last_name,
-                //                 email: user.email
-                //             }
-                //         })
-                //     }
-                // )
-
-        //     })
         })
     })
 })

@@ -14,65 +14,64 @@ export const fetchPosts = () => dispatch => {
     })
 }
 
-
-
 export const createPatient = (post) => dispatch => {
-    console.log(post.date_nais);
-    axios.get('http://localhost:4000/enroll/'+ post.cin)
-    .then(res => {
-        if(res.data.length === 0){
-            if(
-                post.first_name === "" 
-                || post.last_name === "" 
-                || post.date_nais === "" 
-                || post.email === "" 
-                || post.address === "" 
-                || post.cin === "" 
-            ) 
-            {
-                dispatch(returnErrors("Les champs sont vides", 401, 'POST_ERROR'))
-                dispatch({
-                    type: POST_ERROR
-                })
-            }
-            else if(post.cin.length != 8) {
-                dispatch(returnErrors("CIN doit etre 8 characters", 401, 'POST_ERROR'))
-                dispatch({
-                    type: POST_ERROR
-                })
-            }
-            else {
-                fetch('http://localhost:4000/enroll/add',
-                {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(post)
-                })
-                .then(res => res.json())
-                .then(post => dispatch({
-                    type: NEW_POST,
-                    payload: post
-                }))
-                .then(res => {
-                    window.location.pathname = "/"
-                })
-                .catch(err => {
-                    dispatch(returnErrors(err.response.data, err.response.status, 'REGISTER_FAIL'))
+    if(
+        post.first_name === "" 
+        || post.last_name === "" 
+        || post.date_nais === "" 
+        || post.email === "" 
+        || post.address === "" 
+        || post.cin === "" 
+    ) 
+    {
+        dispatch(returnErrors("Les champs sont vides", 401, 'POST_ERROR'))
+        dispatch({
+            type: POST_ERROR
+        })
+    }
+    else {
+        axios.get('http://localhost:4000/enroll/find/'+ post.cin)
+        .then(res => {
+            if(res.data.length === 0){
+                if(post.cin.length != 8) {
+                    dispatch(returnErrors("CIN doit etre 8 characters", 401, 'POST_ERROR'))
                     dispatch({
                         type: POST_ERROR
                     })
+                }
+                else {
+                    post.call_date = "En attente"
+                    fetch('http://localhost:4000/enroll/add',
+                    {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(post)
+                    })
+                    .then(res => res.json())
+                    .then(post => dispatch({
+                        type: NEW_POST,
+                        payload: post
+                    }))
+                    .then(res => {
+                        window.location.pathname = "/"
+                    })
+                    .catch(err => {
+                        dispatch(returnErrors(err.response.data, err.response.status, 'REGISTER_FAIL'))
+                        dispatch({
+                            type: POST_ERROR
+                        })
+                    })
+                }
+            }else {
+                dispatch(returnErrors("Vous êtes déjà inscrit", 401, 'POST_ERROR'))
+                dispatch({
+                    type: POST_ERROR
                 })
             }
-        }else {
-            dispatch(returnErrors("You Have Already Registred", 401, 'POST_ERROR'))
-            dispatch({
-                type: POST_ERROR
-            })
-        }
-    })
-
+        })
+    }
 }
 
 // export const editPatient = (post, id) => dispatch => {
