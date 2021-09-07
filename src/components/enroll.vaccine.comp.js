@@ -26,6 +26,7 @@ class Enroll extends Component {
         this.onSubmit = this.onSubmit.bind(this);
         this.onChange = this.onChange.bind(this)
         this.state = {
+            cin: "",
             first_name: "",
             last_name: "",
             date_nais: "",

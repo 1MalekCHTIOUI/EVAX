@@ -88,7 +88,7 @@ class Tables extends Component {
     componentDidMount(){
         this.props.fetchPosts();
         this.fetchData();
-        this.handleDate();
+        this.handleDate()
     }
 
     fetchData() {
@@ -182,7 +182,7 @@ class Tables extends Component {
                     call_date: getNextDayOfTheWeek().toISOString()
                 }
                 axios.put("http://localhost:4000/dashboard/" + setUserDate.id, setUserDate)
-                .then(res => res.json())
+                .then(res => console.log(res.data))
             })
             aWeekLater = new Date(
                 new Date(newestCreation).getFullYear(), 
@@ -202,7 +202,7 @@ class Tables extends Component {
     }
 
     render(){
-        // window.onload = this.handleDate
+        window.onload = this.handleDate
         return (
             <>
                 <Card className="mb-4">

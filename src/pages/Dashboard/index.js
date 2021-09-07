@@ -135,6 +135,7 @@ render() {
                 <div className="row" style={{marginBottom: "2%"}}>
                   <div className="col-xl">
                     <a href="/signup" className="btn btn-success" role="button">Crée un compte Admin</a>
+                    <a href="/enroll" style={{marginLeft:"1vw"}} className="btn btn-primary" role="button">Inscription</a>
                   </div>
                 </div>
                 <div className="row">
