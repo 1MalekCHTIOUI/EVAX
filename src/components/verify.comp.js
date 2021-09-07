@@ -2,7 +2,7 @@ import react, { Component } from 'react'
 import {connect} from 'react-redux'
 import {fetchPosts} from '../actions/postAction'
 import PropTypes from 'prop-types'
-import { Button, Container, Input, Table } from 'reactstrap';
+import { Alert, Button, Container, Input, Table } from 'reactstrap';
 import styles from '../style.module.css'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -22,7 +22,7 @@ let Information = props => (
                     <td>{props.info.last_name.toUpperCase()} {props.info.first_name}</td>
                     <td>{props.info.status.stats ?
                         ` Accepté Votre Rendez-vous est on: ${new Date(props.info.call_date).toDateString()}` 
-                        : " Pending"
+                        : "En attente"
                     }</td>
                 </tr>
             </tbody>
@@ -43,7 +43,8 @@ class Verify extends Component {
             verificationCode: "",
             submited: false,
             correctCode: false,
-            enteredCode: ""
+            enteredCode: "",
+            msg: null
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -80,21 +81,29 @@ class Verify extends Component {
     }
     onSubmit(e) {
         e.preventDefault();
+        this.setState({msg: null})
         if(this.state.cin != ""){
             let set = Math.floor(Math.random() * 1000000);
             let TrueCode = {"code": set};
             this.setState({
-                submited: true,
+                cinExists: false,
                 verificationCode: set
             })
             axios.get("http://localhost:4000/enroll/"+this.state.cin).then(res => {
-                this.setState({
-                    userByCin: res.data
-                })
-                axios.post("http://localhost:4000/sendmail/" + res.data.map(item => item.email), TrueCode)
-                .then(res => console.log(res.status))
-            }
-            )
+                console.log(res.status);
+                if(res.status === 200) {
+                    this.setState({
+                        userByCin: res.data,
+                        submited: true
+                    })
+                    axios.post("http://localhost:4000/sendmail/" + res.data.map(item => item.email), TrueCode)
+                    .then(res => console.log(res.status))
+                }
+            })
+            .catch(err => this.setState({
+                msg: err.response.data.msg,
+            }))
+
         }
     }
     renderElement(){
@@ -104,6 +113,7 @@ class Verify extends Component {
         })
     }
     render(){
+        console.log(this.state.msg);
         return (
             <div className={styles.homeBackground} >
                 <Container style={{
@@ -111,14 +121,18 @@ class Verify extends Component {
                     background:"rgb(0,0,0,0.8)", 
                     color:"white",
                     height: "100%"}}>
+                        
                     <h1 className={styles.showInfo} >Bienvenu Sur EVAX</h1>
                     <h5 className={styles.showInfo} >Vérifier Votre Date</h5>
-                    <form  className="form-inline" onSubmit={this.onSubmit} style={{height:"74vh", display:"flex", justifyContent:"center"}}>
+                    
+                        {this.state.msg ? <Alert color="danger" style={{position:"absolute",width:"30%", left:"35%", top:"25%"}}>{this.state.msg}</Alert> : ""}
+                    
+                    <form className="form-inline" onSubmit={this.onSubmit} style={{height:"74vh", display:"flex", justifyContent:"center"}}>
                         <div className="form-group mb-2">
                             <input name="cin" className="form-control" value={this.state.cin} onChange={this.onChange} placeholder="Entrer Votre N° CIN"/>
                         </div>
                         <button type="submit" style={{marginLeft:"1vh"}} className="btn btn-danger mb-2">Vérifier Identité</button>
-                        {this.state.submited ? 
+                        {this.state.submited && this.state.msg === null ? 
                             <div className={styles.showInfo} id="verif" style={{width: "80vw", position: "relative", top: "-10vh"}}>
                                 <label>SVP Entre le code de verification</label>
                                 <input type="text" className="form-control" name="enteredCode" value={this.state.enteredCode} onChange={this.onChange} />

@@ -113,9 +113,8 @@ class Enroll extends Component {
             address: this.state.address,
             email: this.state.email,
             ills: this.state.ills,
-            priority: this.state.ills.length > 0 ? Number(priorityAge + this.state.ills.length) : priorityAge
+            priority: this.state.ills.length > 0 ? Number(priorityAge + this.state.ills.length) : priorityAge,
         }
-
         this.props.createPatient(newPatient);
     }
 
@@ -138,7 +137,6 @@ class Enroll extends Component {
                 <thead style={{background:"rgb(206, 204, 204)"}}>
                     <tr>
                         <th>Maladie</th>
-                        <th>#</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -224,7 +222,7 @@ render(){
                         <div className="modal-dialog" role="document"  style={{color:"black"}}>
                             <div className="modal-content">
                                 <div className="modal-header">
-                                    <h5 className="modal-title" id="exampleModalLabel">Please Confirme Information: </h5>
+                                    <h5 className="modal-title" id="exampleModalLabel">Confirmer votre Information: </h5>
                                 </div>
                                 <div className="modal-body">
                                     <div className="form-group">

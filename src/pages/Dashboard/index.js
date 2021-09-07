@@ -81,30 +81,30 @@ render() {
 
                 {/* <!-- Content Row --> */}
                 <div className="row">
-                  <CardInfo title="Earnings (Monthly)"
+                  <CardInfo title="Date"
                     icon="calendar"
                     color="primary"
-                    value="$40,000" />
+                    value={new Date().toDateString().replace(/\s+/g, ', ')} />
 
-                  <CardInfo title="Earnings (Annual)"
+                  <CardInfo title="Percentage des personnes inscrit"
                     icon="calendar"
                     color="success"
-                    value="215,000" />
+                    value={patientsVaccinatedPerNon(this.props.posts).toString().substr(0, 7) + "%"} />
 
-                  <CardInfo title="Tasks"
+                  <CardInfo title="Utilisateurs avec un date alloué"
                     icon="clipboard"
                     color="info"
-                    value="50%" />
+                    value={countAccepted(this.props.posts)} />
 
-                  <CardInfo title="Pending Requests"
+                  <CardInfo title="Utilisateurs en attente"
                     icon="comments"
                     color="warning"
-                    value="18" />
+                    value={countPending(this.props.posts)} />
                 </div>
                 <div className="row">
-                  <div className="col-xl-8 col-lg-6">
+                  {/* <div className="col-xl-8 col-lg-6">
                     <ChartLine />
-                  </div>
+                  </div> */}
                   <CardBasic title="Statistiques de vaccination">
                   <Pie
                     data = {{
@@ -134,7 +134,7 @@ render() {
                 </div>
                 <div className="row" style={{marginBottom: "2%"}}>
                   <div className="col-xl">
-                    <Link to="/signup" className="btn btn-success" role="button">Crée un compte Admin</Link>
+                    <a href="/signup" className="btn btn-success" role="button">Crée un compte Admin</a>
                   </div>
                 </div>
                 <div className="row">

@@ -89,10 +89,8 @@ router.route('/add').post(
     }
 });
 
-
-
-router.route('/:cin').get((req, res) =>{
-    Patient.find({cin: req.params.cin})
+router.route('/find/:cine').get((req, res) =>{
+    Patient.find({cin: req.params.cine})
     .then(
         patient => res.json(patient)
     )
@@ -100,4 +98,22 @@ router.route('/:cin').get((req, res) =>{
         err => res.status(400).json('Error: ' + err)
     )
 });
+
+router.route('/:cin').get((req, res) =>{
+    Patient.find({cin: req.params.cin}, function(err, user) {
+        if(err){
+            res.status(400).json({error: err})
+        }
+        else {
+            if(user.length === 0) {
+                res.status(404).json({msg: "Utilisateur n'est pas Trouvé"})
+            }
+            else {
+                res.status(200).json(user)
+            }
+        }
+    })
+});
+
+
 module.exports = router;
