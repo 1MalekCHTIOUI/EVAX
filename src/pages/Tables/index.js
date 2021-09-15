@@ -88,7 +88,7 @@ class Tables extends Component {
     componentDidMount(){
         this.props.fetchPosts();
         this.fetchData();
-        this.handleDate();
+        this.handleDate()
     }
 
     fetchData() {
@@ -134,12 +134,11 @@ class Tables extends Component {
     // }
 
     handleDate(){
-        let i = 0;
-        let date = new Date().toISOString();
-        
+
         let creationSorted = this.state.allRecords;
         creationSorted.sort((a, b) => a.created_at - b.created_at);
         let newestCreation = new Date().toISOString();
+        
         creationSorted.map( o => {
             if(o.created_at < newestCreation && o.status.stats === false) {
                 newestCreation = o.created_at
@@ -182,7 +181,7 @@ class Tables extends Component {
                     call_date: getNextDayOfTheWeek().toISOString()
                 }
                 axios.put("http://localhost:4000/dashboard/" + setUserDate.id, setUserDate)
-                .then(res => res.json())
+                .then(res => console.log(res.data))
             })
             aWeekLater = new Date(
                 new Date(newestCreation).getFullYear(), 
@@ -202,7 +201,8 @@ class Tables extends Component {
     }
 
     render(){
-        // window.onload = this.handleDate
+        window.onload = this.handleDate
+        const {user} = this.props.auth;
         return (
             <>
                 <Card className="mb-4">
@@ -224,7 +224,7 @@ class Tables extends Component {
                     </div>
                     <div className="card-body">
                         <div className="table-responsive">
-                            <DatatablePageUsers delete={this.handleDelete} info={this.state.users} />
+                            <DatatablePageUsers user={user} delete={this.handleDelete} info={this.state.users} />
                         </div>
                     </div>
                 </Card>
@@ -235,9 +235,11 @@ class Tables extends Component {
 
 Tables.propTypes = {
     fetchPosts: PropTypes.func.isRequired,
-    posts: PropTypes.array.isRequired
+    posts: PropTypes.array.isRequired,
+    auth: PropTypes.object.isRequired
 }
 const mapStateToProps = state => ({
-    posts: state.posts.items
+    posts: state.posts.items,
+    auth: state.auth
 })
 export default connect(mapStateToProps,{fetchPosts,deletePatient})(Tables)

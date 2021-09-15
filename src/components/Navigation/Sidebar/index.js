@@ -17,11 +17,11 @@ class Sidebar extends Component {
       <ul className={toggled ? 'navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled' : 'navbar-nav bg-gradient-primary sidebar sidebar-dark accordion'} id="accordionSidebar">
 
         {/* <!-- Sidebar - Brand --> */}
-        <a className="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+        <a className="sidebar-brand d-flex align-items-center justify-content-center" href="/">
           <div className="sidebar-brand-icon rotate-n-15">
             <i className="fa fa-laugh-wink"></i>
           </div>
-          <div className="sidebar-brand-text mx-5">EVAX</div>
+          <div className="sidebar-brand-text mx-5">VaxiQ</div>
         </a>
 
         {/* <!-- Divider --> */}

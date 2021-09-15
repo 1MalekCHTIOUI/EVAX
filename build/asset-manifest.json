@@ -1,28 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.5722947e.chunk.css",
-    "main.js": "/static/js/main.507e3a1a.chunk.js",
-    "main.js.map": "/static/js/main.507e3a1a.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.65ed346e.js",
-    "runtime-main.js.map": "/static/js/runtime-main.65ed346e.js.map",
-    "static/css/2.4be38407.chunk.css": "/static/css/2.4be38407.chunk.css",
-    "static/js/2.b6153448.chunk.js": "/static/js/2.b6153448.chunk.js",
-    "static/js/2.b6153448.chunk.js.map": "/static/js/2.b6153448.chunk.js.map",
-    "static/js/3.5934eca1.chunk.js": "/static/js/3.5934eca1.chunk.js",
-    "static/js/3.5934eca1.chunk.js.map": "/static/js/3.5934eca1.chunk.js.map",
+    "main.css": "/static/css/main.70bbbfd6.chunk.css",
+    "main.js": "/static/js/main.265a2cbe.chunk.js",
+    "main.js.map": "/static/js/main.265a2cbe.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.3e81a5e0.js",
+    "runtime-main.js.map": "/static/js/runtime-main.3e81a5e0.js.map",
+    "static/css/2.e555d3ec.chunk.css": "/static/css/2.e555d3ec.chunk.css",
+    "static/js/2.6887f60b.chunk.js": "/static/js/2.6887f60b.chunk.js",
+    "static/js/2.6887f60b.chunk.js.map": "/static/js/2.6887f60b.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/2.4be38407.chunk.css.map": "/static/css/2.4be38407.chunk.css.map",
-    "static/css/main.5722947e.chunk.css.map": "/static/css/main.5722947e.chunk.css.map",
-    "static/js/2.b6153448.chunk.js.LICENSE.txt": "/static/js/2.b6153448.chunk.js.LICENSE.txt",
-    "static/media/a.8da6736b.jpg": "/static/media/a.8da6736b.jpg",
-    "static/media/addback.6b9ac583.jpg": "/static/media/addback.6b9ac583.jpg",
-    "static/media/homeCook.1544f1b0.jpg": "/static/media/homeCook.1544f1b0.jpg"
+    "static/css/2.e555d3ec.chunk.css.map": "/static/css/2.e555d3ec.chunk.css.map",
+    "static/css/main.70bbbfd6.chunk.css.map": "/static/css/main.70bbbfd6.chunk.css.map",
+    "static/js/2.6887f60b.chunk.js.LICENSE.txt": "/static/js/2.6887f60b.chunk.js.LICENSE.txt",
+    "static/media/style.module.css": "/static/media/vacc2.52dc4ba1.jpeg",
+    "static/media/font-awesome.css": "/static/media/fontawesome-webfont.f691f37e.woff",
+    "static/media/user.a8759827.png": "/static/media/user.a8759827.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.65ed346e.js",
-    "static/css/2.4be38407.chunk.css",
-    "static/js/2.b6153448.chunk.js",
-    "static/css/main.5722947e.chunk.css",
-    "static/js/main.507e3a1a.chunk.js"
+    "static/js/runtime-main.3e81a5e0.js",
+    "static/css/2.e555d3ec.chunk.css",
+    "static/js/2.6887f60b.chunk.js",
+    "static/css/main.70bbbfd6.chunk.css",
+    "static/js/main.265a2cbe.chunk.js"
   ]
 }

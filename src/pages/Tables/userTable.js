@@ -1,23 +1,21 @@
 import React from 'react';
 import { MDBDataTable } from 'mdbreact';
-import { Button } from 'reactstrap';
 import { connect } from 'react-redux';
-import {fetchPosts, deletePatient} from '../../actions/postAction'
 import PropTypes from 'prop-types'
-import { useState } from 'react';
-import EditModal from '../../components/admin/editModal'
 export const DatatablePageUsers = (props) => {
-
         let DATAS = [];
-        
-        props.info.map(item => {
-          item.action = 
-          (<div>
-            <button className="btn btn-danger" onClick={() => {
-            props.delete(item._id)}}>Delete</button>
-          </div>)
-          DATAS.push(item);
-        })
+        if(props.user) {
+          props.info.map(item => {
+            if(item.email !== props.user.email){
+              item.action = 
+              (<div>
+                <button className="btn btn-danger" onClick={() => {
+                props.delete(item._id)}}>Delete</button>
+              </div>)
+            }
+            DATAS.push(item);
+          })
+        }
         const data = {
         columns: [
           {
@@ -51,7 +49,6 @@ export const DatatablePageUsers = (props) => {
         ],
         rows: DATAS,
     }
-    
     return (
         <MDBDataTable striped bordered hover data={data} />
     );

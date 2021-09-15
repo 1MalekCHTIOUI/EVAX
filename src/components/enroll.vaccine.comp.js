@@ -26,6 +26,7 @@ class Enroll extends Component {
         this.onSubmit = this.onSubmit.bind(this);
         this.onChange = this.onChange.bind(this)
         this.state = {
+            cin: null,
             first_name: "",
             last_name: "",
             date_nais: "",
@@ -91,16 +92,13 @@ class Enroll extends Component {
         e.preventDefault();
 
         const {posts} = this.props;
-        if(posts.error) {
-            console.log("error");
-        }
 
         let Year = this.state.date_nais.substr(0, 4);
         let Month = this.state.date_nais.substr(5, 2);
         let Day = this.state.date_nais.substr(8,2);
         let date = new Date(this.state.date_nais)
-        let age = new Date().getFullYear() - date.getFullYear();
-        let priorityAge = Number(age + date.getMonth());
+        let age = Number(new Date().getFullYear() - date.getFullYear());
+        let priorityAge = Number(age + date.getMonth() + 1);
         let dateSum = Number(Year) + Number(Month) + Number(Day);
         let i = 0;
 
@@ -115,7 +113,8 @@ class Enroll extends Component {
             ills: this.state.ills,
             priority: this.state.ills.length > 0 ? Number(priorityAge + this.state.ills.length) : priorityAge,
         }
-        this.props.createPatient(newPatient);
+        this.props.createPatient(newPatient)
+
     }
 
     illsList(){
@@ -129,7 +128,7 @@ class Enroll extends Component {
                 <p>CIN: <b>{this.state.cin}</b></p>
                 <p>Nom: <b>{this.state.first_name}</b></p>
                 <p>Prenom: <b>{this.state.last_name}</b></p>
-                <p>date_nais: <b>{new Date(this.state.date_nais).toDateString()}</b></p>
+                <p>Date de naissance: <b>{new Date(this.state.date_nais).toDateString()}</b></p>
                 <p>Adresse: <b>{this.state.address}</b></p>
                 <p>Email: <b>{this.state.email}</b></p>
                 {this.state.ills.length > 0 ?     
@@ -174,9 +173,9 @@ render(){
                 </div>
                     <div className="form-group">
                         <label>Carte d'Identité National: </label>
-                        <input type="text" name="cin" className="form-control" value={this.state.cin} onChange={this.onChange}/>
+                        <input type="number" name="cin" className="form-control" value={this.state.cin} onChange={this.onChange}/>
                     </div>     
-                    <div className="row">                 
+                    <div className="row">              
                         <div className="col">
                             <div className="form-group">
                                 <label>Nom: </label>
@@ -200,7 +199,7 @@ render(){
                     </div>
                     <div className="form-group">
                         <label>E-mail: </label>
-                        <input type="text" name="email" className="form-control" value={this.state.email} onChange={this.onChange}/>
+                        <input type="email" name="email" className="form-control" value={this.state.email} onChange={this.onChange}/>
                     </div>                    
                     <div className="form-group" style={{marginTop:"6vh"}} >
                     <input style={{cursor: "pointer"}}

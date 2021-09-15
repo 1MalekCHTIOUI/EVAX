@@ -122,7 +122,7 @@ class Verify extends Component {
                     color:"white",
                     height: "100%"}}>
                         
-                    <h1 className={styles.showInfo} >Bienvenu Sur EVAX</h1>
+                    <h1 className={styles.showInfo} >Bienvenu Sur VaxiQ</h1>
                     <h5 className={styles.showInfo} >Vérifier Votre Date</h5>
                     
                         {this.state.msg ? <Alert color="danger" style={{position:"absolute",width:"30%", left:"35%", top:"25%"}}>{this.state.msg}</Alert> : ""}

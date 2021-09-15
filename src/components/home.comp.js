@@ -22,7 +22,7 @@ class Home extends Component{
                     color:"white",
                     height: "100%"
                     }}>
-                    <h1 className={styles.showInfo}>Bienvenu Sur EVAX</h1>
+                    <h1 className={styles.showInfo}>Bienvenu Sur VaxiQ</h1>
                     <Container className={styles.showInfo}>
                         <Container style={{padding: '2%'}}>
                             <Link to="/enroll"><button className="btn btn-danger">Commence La Vaccination</button></Link>
