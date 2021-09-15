@@ -1,32 +1,24 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
-import {login} from '../../actions/authAction'
 import {clearErrors} from '../../actions/errorAction'
-import { useHistory } from "react-router-dom";
 import {connect} from 'react-redux'
 import {fetchPosts} from '../../actions/postAction'
-import {countVaccinated, countNonVaccinated, countAccepted,countPending ,patientsVaccinatedPerNon, countRegistered} from '../../components/util/analytics'
+import {countAccepted,countPending ,patientsVaccinatedPerNon} from '../../components/util/analytics'
 //Navigation
 import Sidebar from '../../components/Navigation/Sidebar';
 import Topbar from '../../components/Navigation/Topbar';
 import CardInfo from '../../components/Cards/Info';
-import ChartDonut from '../../components/Charts/Donut';
-import ChartLine from '../../components/Charts/Line';
 import PageHeading from '../../components/PageHeading';
 import Tables from '../Tables';
 import { Pie } from 'react-chartjs-2';
 import CardBasic from '../../components/Cards/Basic';
-import RegisterModal from '../../components/auth/register.modal';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-let pending = 0;
-let registered = 0;
+
 
 class Dashboard extends Component {
 
   static propTypes = {
     error: PropTypes.object.isRequired,
-    clearErrors: PropTypes.func.isRequired
+    clearErrors: PropTypes.func.isRequired,
   }
 
   componentDidMount(){
@@ -36,19 +28,16 @@ class Dashboard extends Component {
   constructor(props){
     super(props);
     this.state = {
-      auth: true,
       chartData:{}
     }
   }
 
   componentDidUpdate(prevPorps){
     const {error} = this.props;
-    
     if(error !== prevPorps.error){
-      console.log(error.msg);
-        if(error.msg.msg === "No Authorization") {
-          window.location.pathname = "/"
-        }
+      if(error.msg.msg === "No Authorization") {
+        window.location.pathname = "/"
+      }
     }
   }
 
@@ -86,7 +75,7 @@ render() {
                     color="primary"
                     value={new Date().toDateString().replace(/\s+/g, ', ')} />
 
-                  <CardInfo title="Percentage des personnes inscrit"
+                  <CardInfo title="Percentage des personnes inscrit % non inscrit"
                     icon="calendar"
                     color="success"
                     value={patientsVaccinatedPerNon(this.props.posts).toString().substr(0, 7) + "%"} />
@@ -102,9 +91,7 @@ render() {
                     value={countPending(this.props.posts)} />
                 </div>
                 <div className="row">
-                  {/* <div className="col-xl-8 col-lg-6">
-                    <ChartLine />
-                  </div> */}
+
                   <CardBasic title="Statistiques de vaccination">
                   <Pie
                     data = {{
@@ -140,7 +127,7 @@ render() {
                 </div>
                 <div className="row">
                   <div className="col-xl-12">
-                    <Tables />
+                    <Tables user={this.state.userMail}/>
                   </div>
                 </div>
 
@@ -154,7 +141,7 @@ render() {
             <footer className="sticky-footer bg-white">
               <div className="container my-auto">
                 <div className="copyright text-center my-auto">
-                  <span>Copyright &copy; EVAX 2019</span>
+                  <span>Copyright &copy; VaxiQ 2021</span>
                 </div>
               </div>
             </footer>
@@ -180,8 +167,7 @@ Dashboard.propTypes = {
 }
 const mapStateToProps = state => ({
   posts: state.posts.items,
-  error: state.error,
-  auth: state.auth
+  error: state.error
 })
 
 export default connect(mapStateToProps,{fetchPosts, clearErrors})(Dashboard)

@@ -21,13 +21,13 @@ import PropTypes from 'prop-types';
 import { Fragment } from 'react';
 
 
-export const getClientIp = async () => await publicIp.v4({
-    fallbackUrls: [ "https://ifconfig.co/ip" ]
-  });
+// export const getClientIp = async () => await publicIp.v4({
+//     fallbackUrls: [ "https://ifconfig.co/ip" ]
+//   });
 
 class Navbars extends Component {
     state = {
-        sameIp: false,
+        sameIp: true,
         ip: ""
     }
 
@@ -35,16 +35,16 @@ class Navbars extends Component {
         auth: PropTypes.object.isRequired
     }
     
-    componentDidMount(){
-        let myIp = "196.184.136.27";
-        getClientIp().then(res => {
-            if(res === myIp) {
-                this.setState({sameIp: true});
-            } else {
-                this.setState({sameIp: false});
-            }
-        });
-    }
+    // componentDidMount(){
+    //     let myIp = "102.27.50.162";
+    //     getClientIp().then(res => {
+    //         if(res === myIp) {
+    //             this.setState({sameIp: true});
+    //         } else {
+    //             this.setState({sameIp: false});
+    //         }
+    //     });
+    // }
     
     render() {
         const { isAuthenticated, user } = this.props.auth;
@@ -68,12 +68,13 @@ class Navbars extends Component {
                             <button className="btn btn-primary">Connecter-vous <i class="fa fa-sign-in" aria-hidden="true"></i></button>
                         </Link>
                     </NavItem>
-            </Fragment> : ""
+            </Fragment> 
+            : ""
         )
         return (
             <div>
                 <Navbar dark className={styles.colornav} expand="lg" style={{boxShadow: "0 5px 6px -6px black"}}>
-                    <NavbarBrand href="/">EVAX</NavbarBrand>
+                    <NavbarBrand href="/">VaxiQ</NavbarBrand>
                     <NavbarToggler />
                     
                     { isAuthenticated ? <NavItem ><i class="fa fa-circle" aria-hidden="true"></i> <Link to="/dashboard" style={{textDecoration:"none", color:"gray"}}> Dashboard</Link></NavItem>: "" }

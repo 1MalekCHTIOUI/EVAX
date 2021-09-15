@@ -54,7 +54,7 @@ function countRegistered(arr){
 }
 function getNextDayOfTheWeek(){
     var today = new Date();
-    var nextweek = new Date(today.getFullYear(), today.getMonth(), today.getDate()+7);
+    var nextweek = new Date(today.getFullYear(), today.getMonth(), today.getDate()+8);
     return nextweek;
 }
 /*

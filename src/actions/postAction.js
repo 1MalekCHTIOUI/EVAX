@@ -16,6 +16,7 @@ export const fetchPosts = () => dispatch => {
 
 export const createPatient = (post) => dispatch => {
     console.log(post.cin);
+    let x = true;
     if(
         post.first_name === "" 
         || post.cin == ""
@@ -24,7 +25,7 @@ export const createPatient = (post) => dispatch => {
         || post.email === "" 
         || post.address === "" 
         || post.cin === "" 
-    ) 
+    )
     {
         dispatch(returnErrors("Les champs sont vides", 401, 'POST_ERROR'))
         dispatch({
@@ -32,11 +33,10 @@ export const createPatient = (post) => dispatch => {
         })
     }
     else {
-        let x = true;
         axios.get('http://localhost:4000/enroll/')
         .then(res => {
                 res.data.map(item => {
-                    if(item.email === post.email) {
+                    if(item.email != "" && item.email === post.email) {
                         x = false;
                     }
                 })
@@ -44,14 +44,13 @@ export const createPatient = (post) => dispatch => {
         axios.get('http://localhost:4000/enroll/find/'+ post.cin)
         .then(res => {
             if(res.data.length === 0){
-
                 if(post.cin.length != 8) {
                     dispatch(returnErrors("CIN doit etre 8 characters", 401, 'POST_ERROR'))
                     dispatch({
                         type: POST_ERROR
                     })
                 }
-                if(x == false) {
+                else if(x === false) {
                     dispatch(returnErrors("Email déja utiliser", 401, 'POST_ERROR'))
                     dispatch({
                         type: POST_ERROR

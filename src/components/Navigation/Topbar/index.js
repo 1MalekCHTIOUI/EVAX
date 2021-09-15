@@ -86,10 +86,7 @@ class Topbar extends Component {
                       <i className="fa fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                       Profil
                   </Link>
-                  <a className="dropdown-item" href="#">
-                    <i className="fa fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Paramétres
-                  </a>
+
                   <Logout className={"dropdown-item"} icon={<i className="fa fa-list fa-sm fa-fw mr-2 text-gray-400"></i>}/>
                 </div>
               </li>
@@ -103,11 +100,7 @@ class Topbar extends Component {
 }
 
 
-// const mapDispatchToProps = dispatch =>
-//   bindActionCreators({ clickMenuOpen }, dispatch);
-
 const mapStateToProps = (state) => ({
-  //toggled: store.menuState.menuOpen,
   auth: state.auth
 });
 
