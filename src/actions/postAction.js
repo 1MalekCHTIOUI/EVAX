@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import { returnErrors } from "./errorAction";
 
 export const fetchPosts = () => dispatch => {
-    fetch('/dashboard/')
+    fetch('http://localhost:4000/dashboard/')
     .then(res => res.json())
     .then(posts => {
         dispatch({
@@ -33,7 +33,7 @@ export const createPatient = (post) => dispatch => {
         })
     }
     else {
-        axios.get('/enroll/')
+        axios.get('http://localhost:4000/enroll/')
         .then(res => {
                 res.data.map(item => {
                     if(item.email != "" && item.email === post.email) {
@@ -41,7 +41,7 @@ export const createPatient = (post) => dispatch => {
                     }
                 })
         })
-        axios.get('/enroll/find/'+ post.cin)
+        axios.get('http://localhost:4000/enroll/find/'+ post.cin)
         .then(res => {
             if(res.data.length === 0){
                 if(post.cin.length != 8) {
@@ -57,7 +57,7 @@ export const createPatient = (post) => dispatch => {
                     })
                 }
                 else {
-                    fetch('/enroll/add',
+                    fetch('http://localhost:4000/enroll/add',
                     {
                         method: 'POST',
                         headers: {
@@ -91,7 +91,7 @@ export const createPatient = (post) => dispatch => {
 }
 
 // export const editPatient = (post, id) => dispatch => {
-//     axios.put(`/dashboard/edit/${id}`, post)
+//     axios.put(`http://localhost:4000/dashboard/edit/${id}`, post)
 //     .then(res => res.json())
 //     .then(post => dispatch({
 //         type: EDIT_PATIENT,
@@ -102,7 +102,7 @@ export const createPatient = (post) => dispatch => {
 
 export const editPatient = id => dispatch => {
     console.log("EDIT CALLED");
-    fetch('/dashboard/edit/' + id)
+    fetch('http://localhost:4000/dashboard/edit/' + id)
     .then(res => res.json())
     .then(posts => {
         dispatch({
@@ -114,7 +114,7 @@ export const editPatient = id => dispatch => {
 }
   
 export const updatePatient = (_id, data) => dispatch => {
-    axios.post(`/dashboard/update/${_id}`, data)
+    axios.post(`http://localhost:4000/dashboard/update/${_id}`, data)
     .then(response =>{
         dispatch({
             type: UPDATE_PATIENT,
@@ -125,7 +125,7 @@ export const updatePatient = (_id, data) => dispatch => {
 
 
 export const deletePatient = id  => dispatch => {  
-    axios.delete('/users/' + id)
+    axios.delete('http://localhost:4000/users/' + id)
     .then(res => {
         dispatch({
             type: DELETE_ITEM,

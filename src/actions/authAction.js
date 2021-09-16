@@ -19,7 +19,7 @@ export const register = ({first_name, last_name, email, password}) => dispatch =
         }
     }
     const body = JSON.stringify({first_name, last_name, email, password});
-    axios.post('/users/signup', body, config)
+    axios.post('http://localhost:4000/users/signup', body, config)
         .then(res => dispatch({
             type: REGISTER_SUCCESS,
             payload: res.data
@@ -41,7 +41,7 @@ export const login = ({email, password}) => dispatch => {
         }
     }
     const body = JSON.stringify({email, password});
-    axios.post('auth/signin', body, config)
+    axios.post('http://localhost:4000/auth/signin', body, config)
         .then(res => dispatch({
             type: LOGIN_SUCCESS,
             payload: res.data
@@ -83,7 +83,7 @@ export const loadUser = () => (dispatch, getState) => {
         config.headers['x-auth-token'] = token
     }
 
-    axios.get('/auth/user', config)
+    axios.get('http://localhost:4000/auth/user', config)
         .then(res => dispatch({
             type: USER_LOADED,
             payload: res.data
