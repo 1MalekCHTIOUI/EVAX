@@ -1,3 +1,4 @@
 {
-    "jwtSecret": "evax_jwt"
+    "jwtSecret": "evax_jwt",
+    "mongoURI": "mongodb+srv://chtiouimalek001:22922773Welcome@vaccination.yujnm.mongodb.net/evax?retryWrites=true&w=majority"
 }
