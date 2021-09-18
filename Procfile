@@ -1,1 +1,1 @@
-web: node backend/server
+web: npm run dev
