@@ -15,21 +15,23 @@ app.use(cors());
 app.use(express.json());
 require("dotenv").config()
 
+mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true,createIndexes:true, useUnifiedTopology: true}).then(() => console.log("MongoDB has been connected"))
+.catch((err) => console.log(err));
 
 app.use('/enroll', vaccineRouter);
 app.use('/dashboard', dashboardRouter);
 app.use('/users', userRouter);
 app.use('/auth', authRouter);
 app.use('/sendmail', mailRouter)
-mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true,createIndexes:true, useUnifiedTopology: true}).then(() => console.log("MongoDB has been connected"))
-.catch((err) => console.log(err));
 
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static('../build'));
+  app.use(express.static(path.resolve(__dirname, "../build")));
+  app.get("*", function (request, response) {
+    response.sendFile(path.resolve(__dirname, "..", 'build', "index.html"));
+  });
 
-app.use(express.static(path.resolve(__dirname, "../build")));
-// Step 2:
-app.get("*", function (request, response) {
-  response.sendFile(path.resolve(__dirname, "../build", "index.html"));
-});
+}
 
 app.listen(PORT, () =>{
     console.log("Server is running on Port: " + PORT);
