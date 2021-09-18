@@ -125,7 +125,7 @@ export const updatePatient = (_id, data) => dispatch => {
 
 
 export const deletePatient = id  => dispatch => {  
-    axios.delete('http://localhost:5000/users/' + id)
+    axios.delete('https://vaxiq.herokuapp.com/users/' + id)
     .then(res => {
         dispatch({
             type: DELETE_ITEM,
