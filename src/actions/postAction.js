@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import { returnErrors } from "./errorAction";
 
 export const fetchPosts = () => dispatch => {
-    fetch('http://localhost:5000/dashboard/')
+    fetch('https://vaxiq.herokuapp.com//dashboard/')
     .then(res => res.json())
     .then(posts => {
         dispatch({
@@ -33,7 +33,7 @@ export const createPatient = (post) => dispatch => {
         })
     }
     else {
-        axios.get('http://localhost:5000/enroll/')
+        axios.get('https://vaxiq.herokuapp.com/enroll/')
         .then(res => {
                 res.data.map(item => {
                     if(item.email != "" && item.email === post.email) {
@@ -41,7 +41,7 @@ export const createPatient = (post) => dispatch => {
                     }
                 })
         })
-        axios.get('http://localhost:5000/enroll/find/'+ post.cin)
+        axios.get('https://vaxiq.herokuapp.com//enroll/find/'+ post.cin)
         .then(res => {
             if(res.data.length === 0){
                 if(post.cin.length != 8) {
@@ -57,7 +57,7 @@ export const createPatient = (post) => dispatch => {
                     })
                 }
                 else {
-                    fetch('http://localhost:5000/enroll/add',
+                    fetch('https://vaxiq.herokuapp.com//enroll/add',
                     {
                         method: 'POST',
                         headers: {
