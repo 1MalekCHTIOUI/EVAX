@@ -51,7 +51,7 @@
     "eject": "react-scripts eject",
     "server": "nodemon backend/server.js",
     "client": "npm start",
-    "dev": "concurrently \"npm run server\" \"npm run start\""
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "eslintConfig": {
     "extends": [
