@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const PORT = 4000;
+const path = require('path')
 const vaccineRouter = require('./routes/vaccine');
 const dashboardRouter = require('./routes/dashboard');
 const userRouter = require('./routes/users')
@@ -20,8 +21,8 @@ app.use('/dashboard', dashboardRouter);
 app.use('/users', userRouter);
 app.use('/auth', authRouter);
 app.use("/sendmail", mailRouter)
-app.use(express.static(path.join(__dirname, "client", "build")))
-mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useCreateIndex: true});
+app.use(express.static(path.join(__dirname, "build")))
+mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/evax', {useNewUrlParser: true, useCreateIndex: true});
 
 app.listen(PORT, () =>{
     console.log("Server is running on Port: " + PORT);
