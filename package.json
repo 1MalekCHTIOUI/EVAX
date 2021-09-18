@@ -44,7 +44,7 @@
   },
   "scripts": {
     "proxy": "http://localhost:4000",
-    "start": "react-scripts start",
+    "start": "node backend/server.js",
     "build": "react-scripts build",
     "heroku-postbuild": "npm run install-client && npm run build",
     "test": "react-scripts test",
