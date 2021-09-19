@@ -21,13 +21,13 @@ import PropTypes from 'prop-types';
 import { Fragment } from 'react';
 
 
-// export const getClientIp = async () => await publicIp.v4({
-//     fallbackUrls: [ "https://ifconfig.co/ip" ]
-//   });
+export const getClientIp = async () => await publicIp.v4({
+    fallbackUrls: [ "https://ifconfig.co/ip" ]
+  });
 
 class Navbars extends Component {
     state = {
-        sameIp: true,
+        sameIp: false,
         ip: ""
     }
 
@@ -35,16 +35,14 @@ class Navbars extends Component {
         auth: PropTypes.object.isRequired
     }
     
-    // componentDidMount(){
-    //     let myIp = "102.27.50.162";
-    //     getClientIp().then(res => {
-    //         if(res === myIp) {
-    //             this.setState({sameIp: true});
-    //         } else {
-    //             this.setState({sameIp: false});
-    //         }
-    //     });
-    // }
+    componentDidMount(){
+        let myIp = "102.27.50.162";
+        getClientIp().then(res => {
+            if(res === myIp) {
+                this.setState({sameIp: true});
+            }
+        });
+    }
     
     render() {
         const { isAuthenticated, user } = this.props.auth;
