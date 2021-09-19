@@ -89,14 +89,14 @@ class Verify extends Component {
                 cinExists: false,
                 verificationCode: set
             })
-            axios.get("http://localhost:4000/enroll/"+this.state.cin).then(res => {
+            axios.get("https://vaxiq.herokuapp.com/enroll/"+this.state.cin).then(res => {
                 console.log(res.status);
                 if(res.status === 200) {
                     this.setState({
                         userByCin: res.data,
                         submited: true
                     })
-                    axios.post("http://localhost:4000/sendmail/" + res.data.map(item => item.email), TrueCode)
+                    axios.post("https://vaxiq.herokuapp.com/sendmail/" + res.data.map(item => item.email), TrueCode)
                     .then(res => console.log(res.status))
                 }
             })
